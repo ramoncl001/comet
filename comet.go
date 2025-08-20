@@ -1,3 +1,7 @@
+// build.go
+//go:build go1.19
+// +build go1.19
+
 package comet
 
 import (
@@ -28,11 +32,11 @@ type Response rest.Response
 
 // RequestHandler is a function type that processes HTTP requests and generates responses.
 // The fundamental building block for defining API endpoints and handlers.
-type RequestHandler = func(r *rest.Request) rest.Response
+type RequestHandler = func(r *Request) Response
 
 // Middleware is a function that intercepts and processes HTTP requests
 // before they reach the main handler, enabling cross-cutting concerns.
-type Middleware = func(next rest.RequestHandler) rest.RequestHandler
+type Middleware = func(next RequestHandler) RequestHandler
 
 // PoliciesConfig is a map with all controller policies
 // configuration, such as Role, Permission or custom policies
