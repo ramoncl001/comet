@@ -9,7 +9,6 @@
 *.dylib
 
 # Archivos específicos de Go
-/go.mod
 /go.sum
 
 # Directorio de dependencias de Go
