@@ -28,11 +28,15 @@ type Response rest.Response
 
 // RequestHandler is a function type that processes HTTP requests and generates responses.
 // The fundamental building block for defining API endpoints and handlers.
-type RequestHandler rest.RequestHandler
+type RequestHandler = func(r *rest.Request) rest.Response
 
 // Middleware is a function that intercepts and processes HTTP requests
 // before they reach the main handler, enabling cross-cutting concerns.
-type Middleware middleware.Middleware
+type Middleware = func(next rest.RequestHandler) rest.RequestHandler
+
+// PoliciesConfig is a map with all controller policies
+// configuration, such as Role, Permission or custom policies
+type PoliciesConfig rest.PoliciesConfig
 
 // NewServer creates and returns a new instance of the API server.
 // This is the entry point for initializing the Comet framework application.
